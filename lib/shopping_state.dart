@@ -9,8 +9,3 @@ final class Successfullstate extends ShoppingState{
   List products = [];
   Successfullstate({required this.products});
 }
-final class AddedToCardstate extends ShoppingState{
-  List CardProducts=[];
-  AddedToCardstate({required this.CardProducts});
-
-}

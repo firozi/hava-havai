@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hava_havai/cubit_cart_cubit.dart';
 import 'package:hava_havai/main.dart';
 import 'package:hava_havai/product.dart';
 import 'package:hava_havai/shopping_cubit.dart';
@@ -81,7 +82,7 @@ class _ProductCardState extends State<ProductCard> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text("${widget.product.title} added to cart!")),
                   );
-                  context.read<ShoppingCubit>().AddToCart(widget.product);
+                  context.read<CartCubit>().addToCart(widget.product);
                 },
                 child: Text("Add to Cart",style: TextStyle(color: Colors.white),),
               ),

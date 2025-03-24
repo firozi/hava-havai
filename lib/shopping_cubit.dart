@@ -9,7 +9,7 @@ part 'shopping_state.dart';
 class ShoppingCubit extends Cubit<ShoppingState> {
   ShoppingCubit() : super(ShoppingInitial());
    List<Product> AllProduct=[];
-List<Product>Cart=[];
+
    void fetchProducts()async{
      final response = await http.get(Uri.parse('https://dummyjson.com/products'));
      if (response.statusCode == 200) {
@@ -21,14 +21,5 @@ List<Product>Cart=[];
      }
    }
 
-   void AddToCart(Product product){
-     if(Cart.contains(product)){
-       return null;
-     }
-     else{
-       Cart.add(product);
-       emit(AddedToCardstate(CardProducts: Cart));
-     }
 
-   }
 }

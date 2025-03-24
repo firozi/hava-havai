@@ -5,9 +5,16 @@ import 'package:hava_havai/crat_page.dart';
 import 'package:hava_havai/product.dart';
 import 'package:hava_havai/shopping_cubit.dart';
 
+import 'cubit_cart_cubit.dart';
+
 void main() {
-  runApp(BlocProvider(
-    create: (context) => ShoppingCubit(),
+  runApp(MultiBlocProvider(
+
+
+    providers: [
+      BlocProvider(create: (context)=>ShoppingCubit()),
+      BlocProvider(create: (context)=>CartCubit())
+    ],
     child: MyApp(),
   ));
 }
