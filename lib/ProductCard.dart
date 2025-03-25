@@ -15,6 +15,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
+  bool addedtocart=false;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -78,9 +79,13 @@ class _ProductCardState extends State<ProductCard> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
                 onPressed: () {
+                  addedtocart=true;
+                  setState(() {
+
+                  });
                   context.read<CartCubit>().addToCart(widget.product);
                 },
-                child: Text("Add to Cart",style: TextStyle(color: Colors.white),),
+                child:addedtocart?Text("Added",style: TextStyle(color: Colors.white)) :Text("Add to Cart",style: TextStyle(color: Colors.white),),
               ),
             ),
           ],

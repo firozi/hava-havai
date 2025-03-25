@@ -27,7 +27,7 @@ class CartCubit extends Cubit<CartState> {
     emit(AddedToCardstate(CardProducts: cart,TotalPrice: price,quantity:quantity));
   }
   void decreaseQuentity(double Price,int index){
-    if (quantity[index]>0) {
+    if (quantity[index]>1) {
      quantity[index]--;
       price=price-Price;
       emit(AddedToCardstate(CardProducts: cart,TotalPrice: price,quantity:quantity));
