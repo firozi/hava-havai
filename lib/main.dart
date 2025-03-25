@@ -9,8 +9,6 @@ import 'cubit_cart_cubit.dart';
 
 void main() {
   runApp(MultiBlocProvider(
-
-
     providers: [
       BlocProvider(create: (context)=>ShoppingCubit()),
       BlocProvider(create: (context)=>CartCubit())

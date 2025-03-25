@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:hava_havai/product.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hava_havai/cubit_cart_cubit.dart';
 
 
 class ProductCartCard extends StatefulWidget {
   final Product product;
+  final int index;
+  final int quent;
 
-  const ProductCartCard({Key? key, required this.product}) : super(key: key);
+  const ProductCartCard({Key? key, required this.product,required this.index,required this.quent}) : super(key: key);
 
   @override
   _ProductCartCardState createState() => _ProductCartCardState();
 }
 
 class _ProductCartCardState extends State<ProductCartCard> {
-  int quantity = 1;
 
-  void increment() {
+
+  void increment(double price) {
+    context.read<CartCubit>().addQuentity(price,widget.index);
     setState(() {
-      quantity++;
+
     });
   }
 
-  void decrement() {
-    if (quantity > 1) {
+  void decrement(double price) {
+      context.read<CartCubit>().decreaseQuentity(price,widget.index);
       setState(() {
-        quantity--;
+
       });
     }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,15 +92,19 @@ class _ProductCartCardState extends State<ProductCartCard> {
               children: [
                 IconButton(
                   icon: Icon(Icons.remove, color: Colors.red),
-                  onPressed: decrement,
+                  onPressed:(){
+                    decrement(widget.product.discountedPrice);
+                  },
                 ),
                 Text(
-                  quantity.toString(),
+                  widget.quent.toString(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
                   icon: Icon(Icons.add, color: Colors.green),
-                  onPressed: increment,
+                  onPressed: (){
+                    increment(widget.product.discountedPrice);
+                  },
                 ),
               ],
             ),

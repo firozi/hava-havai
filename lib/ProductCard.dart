@@ -78,10 +78,6 @@ class _ProductCardState extends State<ProductCard> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
                 onPressed: () {
-                  // Handle Add to Cart Action
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("${widget.product.title} added to cart!")),
-                  );
                   context.read<CartCubit>().addToCart(widget.product);
                 },
                 child: Text("Add to Cart",style: TextStyle(color: Colors.white),),
