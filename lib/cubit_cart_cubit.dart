@@ -1,5 +1,4 @@
 
-
 import 'package:bloc/bloc.dart';
 import 'package:hava_havai/product.dart';
 import 'package:meta/meta.dart';
